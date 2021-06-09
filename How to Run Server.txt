@@ -1,0 +1,8 @@
+
+Run server Node JS
+cd backend run = > nodemon server.js
+
+Run Server React
+cd frond end = > npm start
+
+Database MYSQL

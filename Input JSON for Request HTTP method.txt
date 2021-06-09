@@ -1,0 +1,76 @@
+
+===================================================
+
+INPUT POST JSON EXAMPLE
+
+==================================================
+
+=== PURCHASE ORDER ====
+
+ create Ticket order 
+
+  {
+    "poid":"PO_0001",
+    "total_weight":null,
+    "qty" : null,
+    "qty_res":null,
+    "status":"Open",
+    "date_purchase":"2020-01-02",
+    "order_detail":[
+    {
+        "poid":"PO_0001",
+        "item_name":"sdfddddsdf",
+        "weight":"115",
+        "weight_peritem":"23",
+        "type":"Dus",
+        "qty":"5",
+        "qty_res":"5"
+    },
+       {
+        "poid":"PO_0001",
+        "item_name":"sdfsdf435345dfdsdf",
+        "weight":"140",
+        "weight_peritem":"20",
+        "type":"dus",
+        "qty":"7",
+        "qty_res":"7"
+    }
+    ]
+}
+
+
+=== DELIVERY ORDER ====
+
+ Create Delivery Order 
+
+POST : http://localhost:8000/api/delivery/
+
+{
+    "doid":"DO_0001",
+    "poid":"PO_0001",
+    "number_plate": "SDSEW24W"
+}
+
+
+==== TRANSACTION  ===========
+
+Success Delivery Confirmation from  driver
+
+POST :  http://localhost:8000/api/transaction-delivery/DO_0001/sent 
+
+parameter only url DO ID
+
+cencel Delivery Confirmation from  driver
+
+POST :  http://localhost:8000/api/transaction-delivery/cencel
+
+{
+    "id":"c-11",
+    "doid":"DO_0001",
+    "reason" : "Ban meledak",
+    "cencel_time" : "2021-05-10 01:17:57"
+}
+
+
+
+	

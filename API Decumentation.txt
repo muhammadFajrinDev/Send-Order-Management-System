@@ -1,0 +1,71 @@
+
+===================================================
+
+API Documentation Send Order Management System (SOMS)
+
+==================================================
+
+=== PURCHASE ORDER ====
+
+1. Show List  Overall  Ticket Order  
+
+GET : http://localhost:8000/api/order/ {POID} 
+parameter : wildcard  %LIKE%  Order ticket ID (Optional)
+
+2. Get one ticket detail  by Primary key with overall Items
+
+GET : http://localhost:8000/api/order/ {POID} 
+parameter : Order ticket ID (mandatory)
+
+3.  create Ticket order 
+
+POST : http://localhost:8000/api/order/ 
+
+parameter : poid (Order ID), date_purchase, order_detail object in array - > poid, item_name , weight = MUST Formula (qty * weight_peritem), 
+	  weight_peritem,  type, qty, qty_res (qty res must same with qty)
+
+=== DELIVERY ORDER ====
+
+4. Send Items 
+
+POST : http://localhost:8000/api/delivery/
+
+parameter : doid (Delivery ID) ,  poid (Order ID),  number_plate (cars select for send item) 
+
+5. Show List  Overall  Ticket Delivery
+
+GET : http://localhost:8000/api/delivery/{DOID} 
+parameter : wildcard  %LIKE%  Delivery ticket ID (Optional)
+
+6. Get one ticket detail  by Primary key with overall Items
+
+GET : http://localhost:8000/api/delivery/ {DOID} 
+parameter : Delivery ticket ID (mandatory)
+
+==== TRANSACTION  ===========
+
+7. Success Delivery Confirmation from  driver
+
+POST :  http://localhost:8000/api/transaction-delivery/{DO ID}/sent 
+
+parameter : doid (Delivery ID)
+
+8. Cencel Delivery Confirmation from  driver
+
+POST :  http://localhost:8000/api/transaction-delivery/cencel
+
+parameter : id, do id, reason,cencel_time
+
+======  Cars Status =========
+
+9. GET : http://localhost:8000/api/cars-activity/ {NUMBER PLATE}
+
+parameter : number_plate (optional)
+
+======  Cancel Delivery all List =========
+
+9. GET : http://localhost:8000/api/cancel-delivery/ {DOID}
+
+parameter : doid(optional)
+
+	
